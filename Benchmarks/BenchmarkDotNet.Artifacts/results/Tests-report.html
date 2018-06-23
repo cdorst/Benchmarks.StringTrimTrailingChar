@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Tests</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.14, OS=Windows 10.0.17134
+Intel Core i5-3570K CPU 3.40GHz (Ivy Bridge), 1 CPU, 4 logical and 4 physical cores
+.NET Core SDK=2.1.301
+  [Host]     : .NET Core 2.1.1 (CoreCLR 4.6.26606.02, CoreFX 4.6.26606.05), 64bit RyuJIT
+  Job-TVHPKX : .NET Core 2.1.1 (CoreCLR 4.6.26606.02, CoreFX 4.6.26606.05), 64bit RyuJIT
+</code></pre>
+<pre><code>LaunchCount=10  
+</code></pre>
+
+<table>
+<thead><tr><th>                     Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Rank</th><th>Gen 0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>CharEquals_WithoutSemicolon</td><td>0.2998 ns</td><td>0.0048 ns</td><td>0.0174 ns</td><td>1</td><td>-</td><td>0 B</td>
+</tr><tr><td>CharEquals_WithSemicolon</td><td>13.0144 ns</td><td>0.0431 ns</td><td>0.1533 ns</td><td>5</td><td>0.0152</td><td>48 B</td>
+</tr><tr><td>CharEquals_InRef_WithoutSemicolon</td><td>2.2023 ns</td><td>0.0054 ns</td><td>0.0198 ns</td><td>3</td><td>-</td><td>0 B</td>
+</tr><tr><td>CharEquals_InRef_WithSemicolon</td><td>14.8911 ns</td><td>0.0244 ns</td><td>0.0866 ns</td><td>7</td><td>0.0152</td><td>48 B</td>
+</tr><tr><td>EndsWith_WithoutSemicolon</td><td>1.7061 ns</td><td>0.0033 ns</td><td>0.0118 ns</td><td>2</td><td>-</td><td>0 B</td>
+</tr><tr><td>EndsWith_WithSemicolon</td><td>14.2716 ns</td><td>0.0250 ns</td><td>0.0905 ns</td><td>6</td><td>0.0152</td><td>48 B</td>
+</tr><tr><td>EndsWith_InRef_WithoutSemicolon</td><td>2.6133 ns</td><td>0.0042 ns</td><td>0.0152 ns</td><td>4</td><td>-</td><td>0 B</td>
+</tr><tr><td>EndsWith_InRef_WithSemicolon</td><td>15.2992 ns</td><td>0.0230 ns</td><td>0.0813 ns</td><td>8</td><td>0.0152</td><td>48 B</td>
+</tr></tbody></table>
+</body>
+</html>
